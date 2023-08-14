@@ -1,0 +1,6 @@
+kubectl cp ~/Desktop/filename pod:/path/filename -n namespace 
+kubectl cp pod:/path/filename ~/Desktop/filename -n namespace
+kubectl get pods -n namespace
+kubectl exec -it podname -n namespace -- /bin/sh
+kubectl logs podname -n namespace -f
+kubectl logs podname -n namespace --since=1m
