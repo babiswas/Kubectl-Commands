@@ -1,0 +1,38 @@
+IAM role AWS
+============
+>Identity and access management.
+>Least priviledge model
+
+1.Access based control
+2.Resource based control
+
+Action we perform on resources depend on policy.(Authorization)
+
+Plicy document determines the policy.
+If something is not allowed explicitly than it means denied imlicitly.If explicitly allowed than the action is alloweed.
+
+Resource based access policy is much granular control over actions.
+Access based policy control the actions on the resources ex:Read,Write etc.
+
+Resource Creation
+1.Console 
+2.SDK
+3.CLI
+
+Access Key and Secret access key
+================================
+1.Access Key
+2.Secret access key
+
+Access to resources is bassed on policy associated with the user.
+
+ARN:Aws resource number.
+
+
+Split user into groups and apply policy on the groups.
+
+Roles and Trust relationship
+============================
+Assume a role and perform a task.Its a temporary credential.
+
+Created user can access resources by providing their access key and secret access key based on the policy document associated with the user.
