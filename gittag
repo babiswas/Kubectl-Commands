@@ -19,3 +19,8 @@ git checkout -b branch_name tag_name
 git tag tag_name commit_ref
 
 Tags are created to mark historic points.
+
+git push origin --delete branch_name
+git commit --amend
+git diff curent_branch origin/branch
+git log -1 HEAD --stat
