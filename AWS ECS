@@ -1,0 +1,51 @@
+AWS ECS
+=======
+Managed container orchestrator(EKS,Docker Swarm)
+
+Functionality:
+1.Deployment and load balance
+2.Auto scaling for handling traffic
+
+ECS has 2 launch types:
+1.EC2
+2.Fargate
+
+
+EC2 launch type
+=====================================================================
+We have to manage the underlying infrastructure.
+
+              ECS
+Control plane      cluster
+
+We have to manage the EC2 instances if the lunch type is EC2.
+1.Docker install
+2.ECS agent
+3.Firewall
+4.Patches
+
+We manage the EC2 and ECS manage the containers.
+====================================================================
+
+ECS v/s Fargate
+===============
+Fargate based launch type.ECS manages the underlying infrastructure.
+                   ECS
+     Control plane   cluster Fagate
+Fargate follows serverless architecture.
+
+=======================================================================
+
+1.Developer--->dockerize--->dockerhub
+2.Taskdefinition(How many containers,cpu,memory,port)
+
+A task is a running container.
+========================================================================
+ECS Service:
+
+Load balancer
+=============
+               Load balancer:
+               ==============
+               ECS Service
+         Control plance Cluster(Tasks)
