@@ -1,0 +1,21 @@
+Git Tags
+========
+Tagging is done to mark some release points.
+Mark historic point for your project using tags.
+
+
+Commands
+=========
+git checkout branch_name
+git tag -a v1.1 -m "added a release tag."(annotative tag)
+git show v1.0
+git tag -l
+git tag -d tag_name
+git tag tag_name
+git push origin tag_name
+git push origin --tags
+git push origin -d tag_name
+git checkout -b branch_name tag_name
+git tag tag_name commit_ref
+
+Tags are created to mark historic points.
