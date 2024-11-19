@@ -1,0 +1,63 @@
+ConfigMap Kubernetes
+=====================
+
+Configmap Kubernetes
+====================
+Config map is used to store insensitive config info.
+For insensitive data use config map and for sensitive data use secrets.
+The encryption used by configmap is base64
+
+Configmap:
+1.Enviroment values
+2.Command line arguments
+3.Property files
+
+Config map is used to decouple configuration from code.
+Configuration is read from file system or enviroment variables.
+
+Configmaps are stored in kubernetes etcd
+
+kubectl apply -f config_map.yml
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-config
+data:
+  database_host: "192.168.0.1"
+  debug_mode: "1"
+  log_level: "verbose"
+
+
+ kubectl get cm -n xx
+ kubectl get configmap demo-config -o jsonpath='{.data}' | jq
+
+ Mounting configmaps into pods:
+ ==============================
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod
+spec:
+  containers:
+    - name: app
+      command: ["/bin/sh", "-c", "printenv"]
+      image: busybox:latest
+      envFrom:
+        - configMapRef:
+            name: demo-config
+
+Pods that mount a ConfigMap as a volume will receive the new ConfigMap’s values, but the change won’t be instantaneous.
+
+
+Node:
+======
+Kubelet
+kubeproxy
+
+
+The Kubelet worker process running on your cluster’s Nodes periodically checks for ConfigMap changes and updates the content of the files mounted into your Pods
+
+ConfigMaps are only suitable for values that aren’t sensitive or confidential. Data isn’t encrypted so it could be retrieved by anyone who gains access to your cluster’s etcd datastore.
