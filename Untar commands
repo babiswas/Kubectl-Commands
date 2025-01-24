@@ -1,0 +1,20 @@
+Tar Commands
+=============
+Basic untar command
+tar -xf archive.tar
+
+Verbose mode:
+=============
+tar -xvf archive.tar
+
+Untar gzipped 
+=============
+tar -xzf archive.tar.gz
+
+Untar bzipped
+=============
+tar -xjf archive.tar.bz2
+
+Untar to specific directory
+============================
+tar -xvf archive.tar -C /path/to/directory
