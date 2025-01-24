@@ -25,4 +25,6 @@ gzip hello.txt
 gunzip hello.txt.gz
 
 tar -cvf archive_name folder
+gzip archive_name
+tar -cvzf folder
 
