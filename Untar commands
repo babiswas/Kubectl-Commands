@@ -18,3 +18,11 @@ tar -xjf archive.tar.bz2
 Untar to specific directory
 ============================
 tar -xvf archive.tar -C /path/to/directory
+
+Compress a file in linux
+=======================
+gzip hello.txt
+gunzip hello.txt.gz
+
+tar -cvf archive_name folder
+
