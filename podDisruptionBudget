@@ -1,0 +1,93 @@
+PodDisruption Budget(PDB)
+========================
+
+Minimum number of pods that should remain available during disruptions.
+This is called pod disruption budget.
+
+Node mantainenece
+Scaling down
+Node Failures
+
+The minimum number of pods that should remain available is called pod disruption budget.
+
+Pod Disruption Budget manifest
+===============================
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: nginx-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: nginx-controller
+
+
+kubectl drain node-1 --ignore-daemonset --delete-emptydir-data
+
+Kubernetes Network Policy
+==========================
+
+By default all apps are allowed to communicate with each others in kubernetes.
+
+1.Specific pods
+2.Specific namespace
+3.IP adress blocks
+
+Network plugins:
+1.Calico
+2.Cillium
+
+Network policy  ______________> pod
+1.pod labels
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: pod2
+  policyTypes:
+    - Ingress
+    - Egress
+
+
+Network policy manifest.
+========================
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: pod2
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: pod1
+  egress:
+    - to:
+      - podSelector:
+          matchLabels:
+            app: pod1
+
+Kubernetes RBAC
+================
+
+A kubernetes role is a namespaced objects.
+
+1.Role
+2.Clusterrole
+3.RoleBindings
+4.ClusterRoleBindings
